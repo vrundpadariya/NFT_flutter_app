@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -9,44 +8,36 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Timer(const Duration(seconds: 5), () {
-      Get.toNamed('/intr');
+      // Get.toNamed('/intr');
     });
-    return Scaffold(
-      backgroundColor: const Color(0xfff4f7fb),
-      body: Container(
-        height: double.infinity,
-        width: double.infinity,
-        child: Column(
+    return SafeArea(child: Scaffold(
+        backgroundColor: const Color(0xfff4f7fb),
+        body: Column(
           children: [
-            const SizedBox(
-              height: 250,
-            ),
-            Container(
-              height: 200,
-              width: 200,
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: AssetImage(
-                    "asset/NFT.gif",
-                  ),
+            Expanded(
+              flex: 1,
+              child: Container(
+                child: Text(
+                  "NFThis",
+                  style: TextStyle(),
                 ),
               ),
             ),
-            const SizedBox(
-              height: 300,
-            ),
-            const Text(
-              "TokenTraders",
-              style: TextStyle(
-                fontSize: 30,
-                letterSpacing: 5,
-                fontStyle: FontStyle.italic,
+            Expanded(
+              flex: 1,
+              child: Container(
+                height: double.infinity,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(
+                      "asset/splash_screen-removebg.png",
+                    ),
+                  ),
+                ),
               ),
             )
           ],
-        ),
-      ),
-    );
+        ));)
   }
 }
