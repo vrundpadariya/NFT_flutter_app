@@ -12,7 +12,13 @@ class _IntroState extends State<Intro> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        children: [],
+        children: [
+          Container(
+            height: 200,
+            width: 200,
+            color: Colors.red,
+          ),
+        ],
       ),
     );
   }

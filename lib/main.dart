@@ -14,7 +14,7 @@ void main() {
           page: () => const SplashScreen(),
         ),
         GetPage(
-          name: "/intr",
+          name: "/intro",
           page: () => Intro(),
         ),
       ],
