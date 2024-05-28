@@ -11,13 +11,13 @@ class SplashScreen extends StatelessWidget {
     Timer(const Duration(seconds: 5), () {
       Get.toNamed("/intro");
     });
-    return SafeA  rea(
+    return SafeArea(
       child: Scaffold(
         backgroundColor: const Color(0xfff4f7fb),
         body: Stack(
           alignment: Alignment.center,
           children: [
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
