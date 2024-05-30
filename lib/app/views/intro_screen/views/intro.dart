@@ -1,14 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:nftapp/header.dart';
 
-class Intro extends StatefulWidget {
+class Intro extends StatelessWidget {
   const Intro({super.key});
 
-  @override
-  State<Intro> createState() => _IntroState();
-}
-
-class _IntroState extends State<Intro> {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -53,18 +47,20 @@ class _IntroState extends State<Intro> {
             style: MyGoogleFonts.robotoBold(height),
           ),
           SizedBox(
-            height: height / 15,
+            height: height / 11,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Get.toNamed("/login");
+                },
                 child: Padding(
                   padding: const EdgeInsets.all(5),
                   child: Container(
                     alignment: Alignment.center,
-                    height: height / 10,
+                    height: height / 12,
                     width: width / 2.3,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
@@ -85,7 +81,7 @@ class _IntroState extends State<Intro> {
                 padding: const EdgeInsets.all(5),
                 child: Container(
                   alignment: Alignment.center,
-                  height: height / 10,
+                  height: height / 12,
                   width: width / 2.3,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
