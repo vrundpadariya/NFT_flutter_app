@@ -38,6 +38,7 @@ dependencies:
   get:
   google_fonts:
   social_media_buttons:
+  firebase_core:
 
 
 
