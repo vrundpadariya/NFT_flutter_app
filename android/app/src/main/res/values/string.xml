@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="facebook_app_id">1431833344128510</string>
+    <string name="fb_login_protocol_scheme">fb1431833344128510</string>
+    <string name="facebook_client_token">55c77656383b044642c7c6ac748674f8</string>
+    <string name="app_name">"vrund_nft_app"</string>
+
+</resources>

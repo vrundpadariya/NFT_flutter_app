@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:nftapp/app/views/login/views/login.dart';
 import 'package:nftapp/app/views/splash_screen/Splash_screen.dart';
 
+import 'app/views/home/views/home.dart';
 import 'app/views/intro_screen/views/intro.dart';
 import 'app/views/signup/views/signup.dart';
 import 'firebase_options.dart';
@@ -33,8 +34,13 @@ void main() async {
         GetPage(
           name: "/signup",
           page: () => Signup(),
+        ),GetPage(
+          name: "/home",
+          page: () => home(),
         ),
       ],
     ),
   );
 }
+//not necessary
+//https://nft-app-5e17e.firebaseapp.com/__/auth/handler

@@ -117,9 +117,18 @@ class Signup extends StatelessWidget {
             Obx(
               () => GestureDetector(
                 onTap: () {
+                  Signupbutton(
+                    email: signupEmailController.text,
+                    password: signuppasswordController.text,
+                  );
+
+                  signupEmailController.clear();
+                  signuppasswordController.clear();
+                  signupconfirmpasswordController.clear();
+
                   log("$password");
                   log("$confirmpassword");
-                  },
+                },
                 child: Container(
                   alignment: Alignment.center,
                   height: height * 0.08,

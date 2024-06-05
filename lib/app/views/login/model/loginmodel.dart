@@ -1,9 +1,9 @@
-class LoginFormModel {
+class LoginModel {
   String email;
   String password;
 
-  LoginFormModel({
-    this.email = '',
-    this.password = '',
+    LoginModel({
+    required this.email,
+    required this.password,
   });
 }

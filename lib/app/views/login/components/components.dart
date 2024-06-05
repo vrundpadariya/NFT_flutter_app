@@ -6,6 +6,7 @@ import '../../../../header.dart';
 import '../../../helper/firebase/auth_helper.dart';
 import '../../../helper/firebase/cloudfirestore.dart';
 import '../../signup/model/signupmodel.dart';
+import '../model/loginmodel.dart';
 
 TextEditingController loginEmailController = TextEditingController();
 TextEditingController passwordEmailController = TextEditingController();
@@ -15,9 +16,11 @@ LoginButton(
     {required String email,
     required String password,
     required BuildContext context}) async {
-  SignUpModel signUpModel = SignUpModel(email: email, password: password);
+  LoginModel loginModel = LoginModel(email: email, password: password);
+
+  // loginmodel loginmodel = loginmodel(email: email, password: password);
   Map<String, dynamic> res =
-      await AuthHelper.authHelper.login(signUpModel: signUpModel);
+      await AuthHelper.authHelper.login(loginmodel: loginModel);
   if (res['error'] != null) {
     return CherryToast.error(
       title: const Text("Login Failed"),

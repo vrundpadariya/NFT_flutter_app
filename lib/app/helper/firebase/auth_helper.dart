@@ -1,6 +1,14 @@
+
+
+import 'dart:developer';
+
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:nftapp/header.dart';
 
+import '../../views/login/model/loginmodel.dart';
 import '../../views/signup/model/signupmodel.dart';
+
+
 
 
 class AuthHelper {
@@ -38,12 +46,12 @@ class AuthHelper {
   }
 
   //todo:login with email password
-  Future<Map<String, dynamic>> login({required SignUpModel signUpModel}) async {
+  Future<Map<String, dynamic>> login({required LoginModel loginmodel}) async {
     Map<String, dynamic> res = {};
     try {
       UserCredential userCredential = await auth.signInWithEmailAndPassword(
-        email: signUpModel.email,
-        password: signUpModel.password,
+        email: loginmodel.email,
+        password: loginmodel.password,
       );
       res['user'] = userCredential.user;
     } on FirebaseAuthException catch (e) {
@@ -80,5 +88,42 @@ class AuthHelper {
   Future<void> signOut() async {
     await auth.signOut();
     await googleSignIn.signOut();
+  }
+}
+
+//todo: facebook login
+
+
+Future<UserCredential> signInWithFacebook() async {
+  try {
+    final LoginResult loginResult = await FacebookAuth.instance.login();
+
+    if (loginResult.status == LoginStatus.success) {
+      final AccessToken? accessToken = loginResult.accessToken;
+
+      if (accessToken == null) {
+        throw FirebaseAuthException(
+          code: 'ERROR_MISSING_ACCESS_TOKEN',
+          message: 'Access token is null.',
+        );
+      }
+
+      final OAuthCredential credential = FacebookAuthProvider.credential(accessToken.tokenString);
+      return await FirebaseAuth.instance.signInWithCredential(credential);
+    } else {
+      throw FirebaseAuthException(
+        code: 'ERROR_FACEBOOK_LOGIN_FAILED',
+        message: 'The Facebook login was not successful.',
+      );
+    }
+  } on FirebaseAuthException catch (e) {
+    // Handle Firebase authentication exceptions
+
+    log('Firebase Auth Exception: ${e.code} - ${e.message}');
+    rethrow; // rethrow the exception
+  } catch (e) {
+    // Handle other exceptions
+    log('Other Exception: $e');
+    rethrow; // rethrow the exception
   }
 }

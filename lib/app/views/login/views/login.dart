@@ -1,5 +1,6 @@
 import 'package:nftapp/header.dart';
 import 'dart:developer';
+import '../../../helper/firebase/auth_helper.dart';
 import '../controller/loginController.dart';
 
 class login_page extends StatelessWidget {
@@ -145,14 +146,18 @@ class login_page extends StatelessWidget {
                   ),
                   SocialMediaButton.google(
                     size: height / 18.5,
-                    onTap: () {},
+                    onTap: () {
+                      google();
+                    },
                   ),
                   SizedBox(
                     width: width / 25.5,
                   ),
                   SocialMediaButton.facebook(
                     size: height / 18.5,
-                    onTap: () {},
+                    onTap: () {
+                      signInWithFacebook();
+                    },
                   ),
                   SizedBox(
                     width: width / 25.5,
@@ -167,6 +172,12 @@ class login_page extends StatelessWidget {
             ),
             SizedBox(
               height: height / 18.5,
+            ),
+            Text(
+              "Don't have an account? ",
+              style: TextStyle(
+                fontSize: height / 50,
+              ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
