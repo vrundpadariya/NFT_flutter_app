@@ -19,7 +19,7 @@ void main() async {
       debugShowCheckedModeBanner: false,
       getPages: [
         GetPage(
-          name: "/signup",
+          name: "/",
           page: () => const SplashScreen(),
         ),
         GetPage(
@@ -31,7 +31,7 @@ void main() async {
           page: () => login_page(),
         ),
         GetPage(
-          name: "/",
+          name: "/signup",
           page: () => Signup(),
         ),
       ],

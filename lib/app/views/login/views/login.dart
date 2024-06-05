@@ -13,94 +13,102 @@ class login_page extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(
-                height: height / 10.5,
-              ),
-              Row(
-                children: [
-                  SizedBox(
-                    width: width / 30.5,
+          body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: height / 10.5,
+            ),
+            Row(
+              children: [
+                SizedBox(
+                  width: width / 30.5,
+                ),
+                Text(
+                  "Login into your account",
+                  style: TextStyle(
+                    fontSize: height / 32,
                   ),
-                  Text(
-                    "Login into your account",
-                    style: TextStyle(
-                      fontSize: height / 32,
+                ),
+              ],
+            ),
+            SizedBox(
+              height: height / 18.5,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SizedBox(
+                height: 70,
+                width: double.infinity,
+                child: TextFormField(
+                  controller: loginEmailController,
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
                     ),
+                    hintText: "Email",
+                    labelText: "Email",
                   ),
-                ],
+                ),
               ),
-              SizedBox(
-                height: height / 18.5,
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: SizedBox(
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Obx(
+                () => SizedBox(
                   height: 70,
                   width: double.infinity,
                   child: TextFormField(
-                    controller: loginEmailController,
-                    keyboardType: TextInputType.emailAddress,
+                    obscureText: Controller.isPasswordVisible.value,
+                    controller: passwordEmailController,
+                    keyboardType: TextInputType.visiblePassword,
                     decoration: InputDecoration(
+                      suffixIcon: IconButton(
+                        onPressed: () {
+                          Controller.togglePasswordVisibility();
+                          log("${Controller.isPasswordVisible.value}");
+                        },
+                        icon: const Icon(Icons.remove_red_eye),
+                      ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
-                      hintText: "Email",
-                      labelText: "Email",
+                      hintText: "password",
+                      labelText: "password",
                     ),
                   ),
                 ),
               ),
-              Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Obx(
-                        () => SizedBox(
-                      height: 70,
-                      width: double.infinity,
-                      child: TextFormField(
-                        obscureText: Controller.isPasswordVisible.value,
-                        controller: passwordEmailController,
-                        keyboardType: TextInputType.emailAddress,
-                        decoration: InputDecoration(
-                          suffixIcon: IconButton(
-                            onPressed: () {
-                              Controller.togglePasswordVisibility();
-                              log("${Controller.isPasswordVisible.value}");
-                            },
-                            icon: const Icon(Icons.remove_red_eye),
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          hintText: "password",
-                          labelText: "password",
-                        ),
-                      ),
-                    ),
-                  )),
-              const SizedBox(
-                height: 8,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  const SizedBox(
-                    width: 05,
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                const SizedBox(
+                  width: 05,
+                ),
+                Text(
+                  "Forget Password ?",
+                  style: TextStyle(
+                    fontSize: height / 50,
                   ),
-                  Text(
-                    "Forget Password ?",
-                    style: TextStyle(
-                      fontSize: height / 50,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: height / 16.5,
-              ),
-              Container(
+                ),
+              ],
+            ),
+            SizedBox(
+              height: height / 16.5,
+            ),
+            GestureDetector(
+              onTap: () {
+                LoginButton(
+                    email: loginEmailController.text,
+                    password: passwordEmailController.text,
+                    context: context);
+              },
+              child: Container(
                 alignment: Alignment.center,
                 height: height / 13.5,
                 width: width / 1.2,
@@ -113,78 +121,78 @@ class login_page extends StatelessWidget {
                   style: TextStyle(fontSize: height / 40, color: Colors.white),
                 ),
               ),
-              SizedBox(
-                height: height / 20.5,
+            ),
+            SizedBox(
+              height: height / 20.5,
+            ),
+            Text(
+              "Or Login with",
+              style: TextStyle(
+                fontSize: height / 50,
               ),
-              Text(
-                "Or Login with",
-                style: TextStyle(
-                  fontSize: height / 50,
-                ),
-              ),
-              SizedBox(
-                height: height / 18.5,
-              ),
-              SizedBox(
-                height: height / 8.5,
-                width: width / 1.2,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: width / 25.5,
-                    ),
-                    SocialMediaButton.google(
-                      size: height / 18.5,
-                      onTap: () {},
-                    ),
-                    SizedBox(
-                      width: width / 25.5,
-                    ),
-                    SocialMediaButton.facebook(
-                      size: height / 18.5,
-                      onTap: () {},
-                    ),
-                    SizedBox(
-                      width: width / 25.5,
-                    ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.apple_rounded),
-                      iconSize: height / 18.5,
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: height / 18.5,
-              ),
-              Row(
+            ),
+            SizedBox(
+              height: height / 18.5,
+            ),
+            SizedBox(
+              height: height / 8.5,
+              width: width / 1.2,
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    "Don't have an account? ",
+                  SizedBox(
+                    width: width / 25.5,
+                  ),
+                  SocialMediaButton.google(
+                    size: height / 18.5,
+                    onTap: () {},
+                  ),
+                  SizedBox(
+                    width: width / 25.5,
+                  ),
+                  SocialMediaButton.facebook(
+                    size: height / 18.5,
+                    onTap: () {},
+                  ),
+                  SizedBox(
+                    width: width / 25.5,
+                  ),
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(Icons.apple_rounded),
+                    iconSize: height / 18.5,
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: height / 18.5,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Don't have an account? ",
+                  style: TextStyle(
+                    fontSize: height / 50,
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Get.toNamed("/signup");
+                  },
+                  child: Text(
+                    "Sign up",
                     style: TextStyle(
                       fontSize: height / 50,
                     ),
                   ),
-                  TextButton(
-                    onPressed: () {
-                      Get.toNamed("/signup");
-                    },
-                    child: Text(
-                      "Sign up",
-                      style: TextStyle(
-                        fontSize: height / 50,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        )
-      ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      )),
     );
   }
 }
